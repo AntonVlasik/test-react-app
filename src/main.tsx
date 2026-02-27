@@ -3,8 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { ThemeProvider, CssBaseline } from '@mui/material'
-import { theme } from 'src/config/theme'
+import { ThemeProvider } from 'src/components'
 import queryClient from './config/queryClient'
 import { createRouter } from './router'
 
@@ -17,11 +16,10 @@ const root = createRoot(container)
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-            <RouterProvider router={router} />
-            <ReactQueryDevtools initialIsOpen={false} />
-        </ThemeProvider>
+      <ThemeProvider>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </ThemeProvider>
     </QueryClientProvider>
   </React.StrictMode>
 )

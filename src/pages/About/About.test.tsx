@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ThemeProvider } from '@mui/material'
-import { theme } from 'src/config/theme'
+import { createAppTheme } from 'src/config/theme'
 import { About } from './index'
 
 // Test utilities
@@ -17,6 +17,7 @@ const createTestQueryClient = () =>
 
 const TestWrapper = ({ children }: { children: React.ReactNode }) => {
   const queryClient = createTestQueryClient()
+  const theme = createAppTheme('light')
   
   return (
     <QueryClientProvider client={queryClient}>

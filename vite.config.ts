@@ -25,11 +25,11 @@ export default defineConfig({
     },
   },
   server: {
-    port: 3000,
+    port: 3002,
     open: true,
   },
   preview: {
-    port: 3000,
+    port: 3002,
   },
   test: {
     globals: true,

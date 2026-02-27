@@ -1,31 +1,37 @@
-import { createTheme } from '@mui/material/styles'
+import { createTheme, PaletteMode } from '@mui/material/styles'
+import type { ThemeMode } from 'src/stores/themeStore'
 
-// Custom Material UI theme configuration
-export const theme = createTheme({
+const getDesignTokens = (mode: PaletteMode) => ({
   palette: {
-    mode: 'light',
+    mode,
     primary: {
-      main: '#1976d2',
-      light: '#42a5f5',
-      dark: '#1565c0',
+      main: mode === 'light' ? '#1976d2' : '#90caf9',
+      light: mode === 'light' ? '#42a5f5' : '#bbdefb',
+      dark: mode === 'light' ? '#1565c0' : '#2196f3',
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#dc004e',
-      light: '#ff5983',
-      dark: '#9a0036',
+      main: mode === 'light' ? '#dc004e' : '#f48fb1',
+      light: mode === 'light' ? '#ff5983' : '#ffc1cc',
+      dark: mode === 'light' ? '#9a0036' : '#ad1457',
       contrastText: '#ffffff',
     },
     background: {
-      default: '#fafafa',
-      paper: '#ffffff',
+      default: mode === 'light' ? '#fafafa' : '#121212',
+      paper: mode === 'light' ? '#ffffff' : '#1e1e1e',
     },
     text: {
-      primary: '#212121',
-      secondary: '#757575',
+      primary: mode === 'light' ? '#212121' : '#ffffff',
+      secondary: mode === 'light' ? '#757575' : '#b3b3b3',
     },
   },
-  typography: {
+})
+
+// Custom Material UI theme configuration
+export const createAppTheme = (mode: ThemeMode) => {
+  return createTheme({
+    ...getDesignTokens(mode),
+    typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
       fontWeight: 600,
@@ -97,3 +103,4 @@ export const theme = createTheme({
     },
   },
 })
+}

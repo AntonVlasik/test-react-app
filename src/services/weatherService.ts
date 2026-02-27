@@ -1,5 +1,5 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query'
-import apiClient from 'src/services/apiClient'
+import apiClient from 'src/api/client'
 
 // Weather data types
 export interface WeatherData {

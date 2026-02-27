@@ -2,6 +2,7 @@ import { Button, Box, AppBar, Toolbar, Typography } from '@mui/material'
 import { NavLink } from 'react-router-dom'
 import { navigationStyles } from './Navigation.styles'
 import { Path } from 'src/router/path'
+import { ThemeToggle } from 'src/components'
 
 function Navigation() {
   return (
@@ -34,6 +35,7 @@ function Navigation() {
             )}
           </NavLink>
         </Box>
+        <ThemeToggle />
       </Toolbar>
     </AppBar>
   )

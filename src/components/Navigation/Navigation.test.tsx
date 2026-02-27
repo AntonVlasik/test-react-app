@@ -1,16 +1,19 @@
 import { render, screen } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material'
-import { theme } from 'src/config/theme'
+import { createAppTheme } from 'src/config/theme'
 import { Navigation } from './index'
 
-const TestWrapper = ({ children }: { children: React.ReactNode }) => (
-  <BrowserRouter>
-    <ThemeProvider theme={theme}>
-      {children}
-    </ThemeProvider>
-  </BrowserRouter>
-)
+const TestWrapper = ({ children }: { children: React.ReactNode }) => {
+  const theme = createAppTheme('light')
+  return (
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        {children}
+      </ThemeProvider>
+    </BrowserRouter>
+  )
+}
 
 describe('Navigation Component', () => {
   it('renders navigation title', () => {
